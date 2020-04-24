@@ -1,11 +1,33 @@
-.box { width: 200px; height: 50px; margin: 10px; font-size: 20px; border-radius: 5px; border: 2px solid black; }
+* { box-sizing: border-box; }
 
-.buttons { text-align: center; }
+body { margin: 0; font-family: 'Quicksand', sans-serif; background-color: #e9f4ff; text-transform: uppercase; }
 
-.text { font-size: 15px; text-align: center; line-height: 20px; }
+.box { width: 200px; height: 50px; margin: 10px; font-size: 20px; border-radius: 10px; border: 2px solid black; background-color: #fcf9d2; }
 
-table { text-align: center; font-size: 20px; line-height: 25px; margin: 0 auto; }
+.buttons { text-align: center; display: -ms-flexbox; display: flex; -ms-flex-pack: center; justify-content: center; }
 
-tr th { width: 200px; }
+.buttons .images { height: 80px; width: 80px; background-size: cover; border: 5px solid black; border-radius: 20px; margin: 10px; text-decoration: none; }
 
-.box-number { font-size: 25px; color: #222c64; padding: 10px; }
+.buttons .images:hover { transform: scale(1.2); }
+
+.buttons .paper { background-image: url("../images/paper.jpg"); }
+
+.buttons .stone { background-image: url("../images/stone.jpg"); }
+
+.buttons .scissors { background-image: url("../images/scissors.jpg"); }
+
+.text { font-size: 20px; text-align: center; line-height: 25px; font-family: 'Baloo Bhaina 2'; }
+
+table { text-align: center; font-size: 25px; line-height: 25px; margin: 20px auto; }
+
+table tr th { width: 150px; }
+
+table td { color: #333ea3; font-weight: bold; padding: 15px 0; font-size: 30px; }
+
+.main-button { text-align: center; }
+
+.main-button .box-number { font-size: 25px; color: black; padding: 10px; }
+
+.main-button .box-number span { color: #ca6060; font-size: 35px; }
+
+footer { display: -ms-flexbox; display: flex; -ms-flex-pack: center; justify-content: center; -ms-flex-align: center; align-items: center; height: 50px; background-color: #fcf9d2; margin-top: 20px; font-weight: bold; }

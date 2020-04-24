@@ -1,36 +1,94 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+    background-color: rgb(233, 244, 255);
+    text-transform: uppercase;
+}
+
 .box {
     width: 200px;
     height: 50px;
     margin: 10px;
     font-size: 20px;
-    border-radius: 5px;
+    border-radius: 10px;
     border: 2px solid black;
+    background-color: rgb(252, 249, 210)
 }
 
 .buttons{
     text-align: center;
-
+    display: flex;
+   justify-content: center;
+    .images{
+        height: 80px;
+        width: 80px;
+        background-size: cover;
+        border: 5px solid black;
+        border-radius: 20px;
+        margin: 10px;
+        text-decoration: none;
+        &:hover {
+            transform: scale(1.2);
+        }
+       
+    }
+    .paper{
+        background-image: url('../images/paper.jpg');  
+        
+    }
+    .stone {
+        background-image: url('../images/stone.jpg');
+      
+    }
+    .scissors {
+        background-image: url('../images/scissors.jpg');
+    }
 }
 
 .text{
-    font-size: 15px;
+    font-size: 20px;
     text-align: center;
-    line-height: 20px;
+    line-height: 25px;
+    font-family: 'Baloo Bhaina 2';
 }
 
 table {
    text-align: center;
-    font-size: 20px;
-    line-height: 25px;
-    margin: 0 auto;
-}
- tr th{
-     width: 200px;
- }
-
-.box-number{
     font-size: 25px;
-    color: rgb(34, 44, 100);
-    padding: 10px;
-    
+    line-height: 25px;
+    margin: 20px auto;
+    tr th{
+        width: 150px;
+    }
+    td {
+        color: rgb(51, 62, 163);
+        font-weight: bold;
+        padding: 15px 0;
+        font-size: 30px;
+    }
+}
+ 
+.main-button {
+    text-align: center;
+    .box-number{
+        font-size: 25px;
+        color: rgb(0, 0, 0);
+        padding: 10px;
+        span{
+            color: rgb(202, 96, 96);
+            font-size: 35px;
+        }
+    }
+}
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    background-color: rgb(252, 249, 210);
+    margin-top: 20px;
+    font-weight: bold;
 }

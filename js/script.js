@@ -30,7 +30,7 @@ var names = function (number) {
     return out;
 }
 var log = function (text) {
-    output.innerHTML += '<br>' + text;
+    output.innerHTML = '<br>' + text + output.innerHTML;
 }
 var playerMove = function (player) {
 
@@ -38,21 +38,21 @@ var playerMove = function (player) {
     console.log(comp);
 
     if ((player == 1 && comp == 2) || (player == 2 && comp == 1) || (player == 3 && comp == 2)) {
-        log('You Win ! You type: ' + names(player) + ' and Computer type: ' + names(comp));
+        log('Win! You: ' + names(player) + '    Computer: ' + names(comp));
         playerWin += 1;
 
     }
     else if (player == comp) {
-        log('It\'s DRAW... You type: ' + names(player) + ' and Computer type: ' + names(comp));
+        log('It\'s DRAW... You: ' + names(player) + '    Computer: ' + names(comp));
 
     }
     else {
-        log('You LOSE :(( Yoy type: ' + names(player) + ' and Computer type: ' + names(comp))
+        log('LOSE :(( You type: ' + names(player) + '    Computer: ' + names(comp))
         compWin += 1;
     };
 
     if (playerWin >= numberOfGames) {
-        log('You WIN !! To play again, please click \'New Game\' button');
+        log('You WIN!! To play again, please click \'New Game\' button');
         canPlay = false;
 
     }

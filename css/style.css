@@ -3,3 +3,9 @@
 .buttons { text-align: center; }
 
 .text { font-size: 15px; text-align: center; line-height: 20px; }
+
+table { text-align: center; font-size: 20px; line-height: 25px; margin: 0 auto; }
+
+tr th { width: 200px; }
+
+.box-number { font-size: 25px; color: #222c64; padding: 10px; }

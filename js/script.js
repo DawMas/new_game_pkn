@@ -7,6 +7,7 @@ var boxScissors = document.getElementById("scissors-button");
 var boxNew = document.getElementById('new-game');
 
 var output = document.getElementById("text-out");
+var outputOver = document.getElementById('text-over');
 
 var resultPlayer = document.getElementById('result-player');
 var resultComp = document.getElementById('result-comp');
@@ -32,10 +33,17 @@ var names = function (number) {
     return out;
 }
 var log = function (text) {
-    output.innerHTML = '<br>' + text + output.innerHTML;
+    output.innerHTML = '<br>' + text;
 }
-var logTable = function(p,s,c){
-    gameTable.insertAdjacentHTML('afterbegin', '<tr><td>'+names(p)+'</td><td>'+s+'</td><td>'+names(c)+'</td></tr>');
+var logOver = function () {
+    outputOver.innerHTML = '<br> Game over, press the new game button!';
+}
+
+var logTable = function (p, s, c) {
+    gameTable.insertAdjacentHTML('afterbegin', '<tr><td>' + names(p) + '</td><td>' + s + '</td><td>' + names(c) + '</td></tr>');
+}
+var isNumber = function (number) {
+    (isNaN(number) || !number || number <= 0) ? (log('Please insert number > 0'), canPlay = false) : (log(''), canPlay = true);
 }
 
 var playerMove = function (player) {
@@ -50,7 +58,7 @@ var playerMove = function (player) {
     }
     else if (player == comp) {
         logTable(player, 'Draw', comp);
-       
+
     }
     else {
         logTable(player, 'Lose', comp);
@@ -71,26 +79,26 @@ var playerMove = function (player) {
 }
 
 boxPaper.addEventListener('click', function () {
-    
-    canPlay ? playerMove(1) : log('Game over, press the new game button!');
+
+    canPlay ? playerMove(1) : logOver();
 });
 boxStone.addEventListener('click', function () {
-    canPlay ? playerMove(2) : log('Game over, press the new game button!');
+    canPlay ? playerMove(2) : logOver();
 });
 boxScissors.addEventListener('click', function () {
-    canPlay ? playerMove(3) : log('Game over, press the new game button!');
+    canPlay ? playerMove(3) : logOver();
 });
 
 boxNew.addEventListener('click', function () {
     output.innerHTML = '';
+    outputOver.innerHTML = '';
     resultPlayer.innerHTML = '';
     resultComp.innerHTML = '';
+    gameTable.innerHTML = '';
     playerWin = 0;
     compWin = 0;
-    numberOfGames = prompt('How many games do You want to play?');
+    isNumber(numberOfGames = prompt('How many games do You want to play?'));
     gameNumber.innerHTML = numberOfGames;
-    canPlay = true;
-    gameTable.innerHTML = '';
     resultComp.innerHTML = 0;
     resultPlayer.innerHTML = 0;
 

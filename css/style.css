@@ -2,27 +2,31 @@
 
 body { margin: 0; font-family: 'Quicksand', sans-serif; background-color: #e9f4ff; text-transform: uppercase; }
 
-.box { width: 200px; height: 50px; margin: 10px; font-size: 20px; border-radius: 10px; border: 2px solid black; background-color: #fcf9d2; }
+.box { width: 200px; height: 50px; margin: 10px; font-size: 20px; border-radius: 10px; border: 2px solid black; background-color: #fcf9d2; outline: 0; }
+
+.paper { background-image: url("../images/paper.jpg"); }
+
+.stone { background-image: url("../images/stone.jpg"); }
+
+.scissors { background-image: url("../images/scissors.jpg"); }
 
 .buttons { text-align: center; display: -ms-flexbox; display: flex; -ms-flex-pack: center; justify-content: center; }
 
-.buttons .images { height: 80px; width: 80px; background-size: cover; border: 5px solid black; border-radius: 20px; margin: 10px; text-decoration: none; }
+.buttons .images { height: 80px; width: 80px; background-size: cover; border: 5px solid black; border-radius: 20px; margin: 10px; text-decoration: none; outline: 0; }
 
 .buttons .images:hover { transform: scale(1.2); }
 
-.buttons .paper { background-image: url("../images/paper.jpg"); }
+.result .heading { font-size: 20px; text-align: center; line-height: 25px; font-family: 'Baloo Bhaina 2'; }
 
-.buttons .stone { background-image: url("../images/stone.jpg"); }
+.result table { margin: 20px auto; text-align: center; font-size: 22px; line-height: 25px; }
 
-.buttons .scissors { background-image: url("../images/scissors.jpg"); }
+.result table th, .result table td { width: 120px; }
 
-.text { font-size: 20px; text-align: center; line-height: 25px; font-family: 'Baloo Bhaina 2'; }
+.result table td { color: #333ea3; font-weight: bold; padding: 15px 0; font-size: 30px; }
 
-table { text-align: center; font-size: 25px; line-height: 25px; margin: 20px auto; }
+.result .game-table { border-collapse: collapse; }
 
-table tr th { width: 150px; }
-
-table td { color: #333ea3; font-weight: bold; padding: 15px 0; font-size: 30px; }
+.result .game-table td { color: #572e2e; font-size: 18px; padding: 5px 0; border-bottom: 1px solid black; }
 
 .main-button { text-align: center; }
 
@@ -30,4 +34,4 @@ table td { color: #333ea3; font-weight: bold; padding: 15px 0; font-size: 30px; 
 
 .main-button .box-number span { color: #ca6060; font-size: 35px; }
 
-footer { display: -ms-flexbox; display: flex; -ms-flex-pack: center; justify-content: center; -ms-flex-align: center; align-items: center; height: 50px; background-color: #fcf9d2; margin-top: 20px; font-weight: bold; }
+footer { display: -ms-flexbox; display: flex; -ms-flex-pack: center; justify-content: center; -ms-flex-align: center; align-items: center; height: 50px; background-color: #fcf9d2; margin-top: 40px; font-weight: bold; }

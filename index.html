@@ -20,7 +20,7 @@
         <div>
             <button class="box" id="new-game">NEW GAME</button>
         </div>
-        <div class="box-number" >PLAY TO <span id="game-number">3</span> WINS</div>
+        <div class="box-number">PLAY TO <span id="game-number">3</span> WINS</div>
 
     </section>
     <section class="buttons">
@@ -34,21 +34,26 @@
             <button class="images scissors" id="scissors-button"></button>
         </div>
     </section>
-    <section class="result">
+
+    <section class="result" id="result-data">
+        <div class="heading" id="text-out"></div>
         <table>
             <tr>
                 <th>Player</th>
+                <th></th>
                 <th>Computer</th>
             </tr>
             <tr>
-                <td id="result-player"></td>
-                <td id="result-comp"></td>
+                <td id="result-player">0</td>
+                <td>:</td>
+                <td id="result-comp">0</td>
             </tr>
+        </table>
+        <table class="game-table" id="game-table">
+
         </table>
 
     </section>
-
-    <div class="text" id="text-out"></div>
 
     <footer>
         <div class="down"> Made by Dave 2020</div>

@@ -43,7 +43,7 @@ var playerMove = function (player) {
     var comp = draw();
     console.log(comp);
 
-    if ((player == 1 && comp == 2) || (player == 2 && comp == 1) || (player == 3 && comp == 2)) {
+    if ((player == 1 && comp == 2) || (player == 2 && comp == 3) || (player == 3 && comp == 1)) {
         logTable(player, 'Win', comp);
         playerWin += 1;
 
@@ -87,7 +87,7 @@ boxNew.addEventListener('click', function () {
     resultComp.innerHTML = '';
     playerWin = 0;
     compWin = 0;
-    numberOfGames = window.prompt('How many games do You want to play?');
+    numberOfGames = prompt('How many games do You want to play?');
     gameNumber.innerHTML = numberOfGames;
     canPlay = true;
     gameTable.innerHTML = '';

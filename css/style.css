@@ -12,9 +12,9 @@ body { margin: 0; font-family: 'Quicksand', sans-serif; background-color: #e9f4f
 
 .buttons { text-align: center; display: -ms-flexbox; display: flex; -ms-flex-pack: center; justify-content: center; }
 
-.buttons .images { height: 80px; width: 80px; background-size: cover; border: 5px solid black; border-radius: 20px; margin: 10px; text-decoration: none; outline: 0; }
+.buttons .player-move { height: 80px; width: 80px; background-size: cover; border: 5px solid black; border-radius: 20px; margin: 10px; text-decoration: none; outline: 0; }
 
-.buttons .images:hover { transform: scale(1.2); }
+.buttons .player-move:hover { transform: scale(1.2); }
 
 .result .heading { font-size: 20px; text-align: center; line-height: 25px; font-family: 'Baloo Bhaina 2'; }
 

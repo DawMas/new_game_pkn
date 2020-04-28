@@ -1,8 +1,7 @@
 'use strict'
 
-var boxPaper = document.getElementById("paper-button");
-var boxStone = document.getElementById("stone-button");
-var boxScissors = document.getElementById("scissors-button");
+
+var playerMove = document.querySelectorAll('.player-move');
 
 var boxNew = document.getElementById('new-game');
 
@@ -14,22 +13,22 @@ var resultComp = document.getElementById('result-comp');
 var gameNumber = document.getElementById('game-number');
 var gameTable = document.getElementById('game-table');
 
-
-var numberOfGames = 3;
-var playerWin = 0;
-var compWin = 0;
-var canPlay = true;
+var params = {
+    numberOfGames: 3,
+    playerWin: 0,
+    compWin: 0,
+    canPlay: true
+}
 
 
 var draw = function () {
     var number = Math.random();
     number = Math.round(number * 2 + 1);
-    console.log(number);
     return number;
 }
 var names = function (number) {
     var out = '';
-    number == 1 ? out = 'paper' : number == 2 ? out = 'stone' : out = 'scissors';
+    number === 1 ? out = 'paper' : number === 2 ? out = 'stone' : out = 'scissors';
     return out;
 }
 var log = function (text) {
@@ -43,51 +42,46 @@ var logTable = function (p, s, c) {
     gameTable.insertAdjacentHTML('afterbegin', '<tr><td>' + names(p) + '</td><td>' + s + '</td><td>' + names(c) + '</td></tr>');
 }
 var isNumber = function (number) {
-    (isNaN(number) || !number || number <= 0) ? (log('Please insert number > 0'), canPlay = false) : (log(''), canPlay = true);
+    (isNaN(number) || !number || number <= 0) ? (log('Please insert number > 0'), params.canPlay = false) : (log(''), params.canPlay = true);
 }
 
-var playerMove = function (player) {
+var playGame = function (player) {
 
     var comp = draw();
-    console.log(comp);
 
-    if ((player == 1 && comp == 2) || (player == 2 && comp == 3) || (player == 3 && comp == 1)) {
+    if ((player === 1 && comp === 2) || (player === 2 && comp === 3) || (player === 3 && comp == 1)) {
         logTable(player, 'Win', comp);
-        playerWin += 1;
+        params.playerWin++;
 
     }
-    else if (player == comp) {
+    else if (player === comp) {
         logTable(player, 'Draw', comp);
 
     }
     else {
         logTable(player, 'Lose', comp);
-        compWin += 1;
+        params.compWin++;
     };
 
-    if (playerWin >= numberOfGames) {
+    if (params.playerWin >= params.numberOfGames) {
         log('You WIN!! Click \'New Game\' button');
-        canPlay = false;
+        params.canPlay = false;
 
     }
-    else if (compWin >= numberOfGames) {
+    else if (params.compWin >= params.numberOfGames) {
         log('Comp WIN !! Click \'New Game\' button');
-        canPlay = false;
+        params.canPlay = false;
     }
-    resultPlayer.innerHTML = playerWin;
-    resultComp.innerHTML = compWin;
+    resultPlayer.innerHTML = params.playerWin;
+    resultComp.innerHTML = params.compWin;
 }
 
-boxPaper.addEventListener('click', function () {
-
-    canPlay ? playerMove(1) : logOver();
-});
-boxStone.addEventListener('click', function () {
-    canPlay ? playerMove(2) : logOver();
-});
-boxScissors.addEventListener('click', function () {
-    canPlay ? playerMove(3) : logOver();
-});
+for (var i = 0; i < playerMove.length; i++) {
+    var temp = playerMove[i].getAttribute('data-move');
+    playerMove[i].addEventListener('click', function () {
+        params.canPlay ? playGame(temp) : logOver();
+    })
+}
 
 boxNew.addEventListener('click', function () {
     output.innerHTML = '';
@@ -95,10 +89,10 @@ boxNew.addEventListener('click', function () {
     resultPlayer.innerHTML = '';
     resultComp.innerHTML = '';
     gameTable.innerHTML = '';
-    playerWin = 0;
-    compWin = 0;
-    isNumber(numberOfGames = prompt('How many games do You want to play?'));
-    gameNumber.innerHTML = numberOfGames;
+    params.playerWin = 0;
+    params.compWin = 0;
+    isNumber(params.numberOfGames = prompt('How many games do You want to play?'));
+    gameNumber.innerHTML = params.numberOfGames;
     resultComp.innerHTML = 0;
     resultPlayer.innerHTML = 0;
 

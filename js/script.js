@@ -22,6 +22,8 @@ var params = {
     playerWin: 0,
     compWin: 0,
     canPlay: true,
+    roundNumber: 0,
+    progress: [],
 }
 
 
@@ -38,17 +40,27 @@ var names = function (number) {
 var log = function (text) {
     output.innerHTML = '<br><br>' + text;
     showModal();
-
 }
-var logOver = function () {
-    outputOver.innerHTML = '<br> Game over, press the new game button!';
+
+var logScores = function () {
+    var scores = '';
+    for (var i = 0; i < params.progress.length; i++) {
+        scores += '<tr><td>' + params.progress[i].round + '</td>'
+            + '<td>' + params.progress[i].playerMove + '</td>'
+            + '<td>' + params.progress[i].compMove + '</td>'
+            + '<td>' + params.progress[i].roundScore + '</td>'
+            + '<td>' + params.progress[i].gameScore + '</td></tr>';
+    }
+    output.insertAdjacentHTML('beforeend',
+        '<br><br><table><tr><th>Round</th><th>Your move</th><th>Comp move</th><th>Round score</th><th>Game score</th></tr>'
+        + scores + '</table >')
 }
 
 var logTable = function (p, s, c) {
     gameTable.insertAdjacentHTML('afterbegin', '<tr><td>' + names(p) + '</td><td>' + s + '</td><td>' + names(c) + '</td></tr>');
 }
-var isNumber = function (number) {
-    (isNaN(number) || !number || number <= 0) ? (log('Please insert number > 0'), params.canPlay = false) : ( params.canPlay = true);
+var checkValue = function (number) {
+    (isNaN(number) || !number || number <= 0) ? (log('Please insert number > 0'), params.canPlay = false) : (params.canPlay = true);
 }
 var showModal = function () {
     for (var i = 0; i < modals.length; i++) {
@@ -62,60 +74,86 @@ var hideModal = function () {
     modalSection.classList.remove('show');
 }
 
+modalSection.addEventListener('click', hideModal);
+
+for (var i = 0; i < modals.length; i++) {
+    modals[i].addEventListener('click', function (event) {
+        event.stopPropagation();
+    })
+}
+
+
+
 
 var playGame = function (event) {
 
     var player = event.target.getAttribute('data-move');
 
     var comp = draw();
+    var score;
 
     if ((player == 1 && comp == 2) || (player == 2 && comp == 3) || (player == 3 && comp == 1)) {
-        logTable(player, 'Win', comp);
+        score = 'Win'
+        logTable(player, score, comp);
         params.playerWin++;
+        params.roundNumber++;
 
     }
     else if (player == comp) {
-        logTable(player, 'Draw', comp);
-
+        score = 'Draw';
+        logTable(player, score, comp);
+        params.roundNumber++;
     }
     else {
-        logTable(player, 'Lose', comp);
+        score = 'Lose';
+        logTable(player, score, comp);
         params.compWin++;
-
+        params.roundNumber++;
     };
+    params.progress.push({
+        round: params.roundNumber,
+        playerMove: names(player),
+        compMove: names(comp),
+        roundScore: score,
+        gameScore: (params.playerWin + ' : ' + params.compWin)
+    });
+
 
     if (params.playerWin >= params.numberOfGames) {
         params.canPlay = false;
         log('You WIN!! Click \'New Game\' button');
-       
+        logScores();
+
     }
     else if (params.compWin >= params.numberOfGames) {
         params.canPlay = false;
         log('Comp WIN !! Click \'New Game\' button');
-      
+        logScores();
     }
     resultPlayer.innerHTML = params.playerWin;
     resultComp.innerHTML = params.compWin;
 }
 
 for (var i = 0; i < playerMove.length; i++) {
-        playerMove[i].addEventListener('click', function(event){
-            params.canPlay ? playGame(event) : log('<br> Game over, press the new game button!')
-        })
+    playerMove[i].addEventListener('click', function (event) {
+        params.canPlay ? playGame(event) : log('<br> Game over, press the new game button!')
+    })
 }
 
 for (var i = 0; i < closeButtoms.length; i++) {
     closeButtoms[i].addEventListener('click', hideModal);
 }
+
 boxNew.addEventListener('click', function () {
-  //  output.innerHTML = '';
-   // outputOver.innerHTML = '';
+
     resultPlayer.innerHTML = '';
     resultComp.innerHTML = '';
     gameTable.innerHTML = '';
     params.playerWin = 0;
     params.compWin = 0;
-    isNumber(params.numberOfGames = prompt('How many games do You want to play?'));
+    params.roundNumber = 0;
+    params.progress = [];
+    checkValue(params.numberOfGames = prompt('How many games do You want to play?'));
     gameNumber.innerHTML = params.numberOfGames;
     resultComp.innerHTML = 0;
     resultPlayer.innerHTML = 0;

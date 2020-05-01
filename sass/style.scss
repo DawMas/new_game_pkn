@@ -99,7 +99,21 @@ body {
     top: 0;
     position: fixed;
     background: rgba(0, 0, 0,0.7);
+    text-align: center;
+    table{
+        text-align: center;
+        color: rgb(87, 46, 46);
+        margin: 0 auto;
+        font-size: 16px;
 
+        td, th{
+            padding: 5px 10px;
+            
+        }
+        tr &:nth-child(2) {
+            background-color: rgb(250, 211, 211);
+        }
+    }
     &.show{
         display: block;
     }
@@ -107,7 +121,7 @@ body {
         display: none;
         border: 5px solid black;
         border-radius: 20px;
-        height: 60vh;
+        //height: 60vh;
         width: 80vw;
         margin: auto;
         position: absolute;
@@ -115,6 +129,8 @@ body {
         left: 50%;
         transform: translate(-50%,-50%);
         background: rgb(233, 244, 255);
+        overflow: auto;
+            margin: 40px 0;
 
         &.show{
             display: block;
@@ -132,7 +148,9 @@ body {
             text-align: center;
             line-height: 25px;
             font-family: 'Baloo Bhaina 2';
+            
         }
+       
     }
 }
 footer{

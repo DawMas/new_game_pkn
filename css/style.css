@@ -32,22 +32,22 @@ body { margin: 0; font-family: 'Quicksand', sans-serif; background-color: #e9f4f
 
 .main-button .box-number span { color: #ca6060; font-size: 35px; }
 
-.overlay { display: none; height: 100%; width: 100%; top: 0; position: fixed; background: rgba(0, 0, 0, 0.7); text-align: center; }
+.overlay { display: none; height: 100%; width: 100%; top: 0; position: fixed; background: rgba(0, 0, 0, 0.7); text-align: center; overflow-y: initial; }
 
-.overlay table { text-align: center; color: #572e2e; margin: 0 auto; font-size: 16px; }
+.overlay table { text-align: center; color: #572e2e; margin: 0 auto; font-size: 16px; border-collapse: collapse; }
 
 .overlay table td, .overlay table th { padding: 5px 10px; }
 
-tr .overlay table:nth-child(2) { background-color: #fad3d3; }
+.overlay table tr:nth-child(even) { background-color: #fad3d3; }
 
 .overlay.show { display: block; }
 
-.overlay .modal { display: none; border: 5px solid black; border-radius: 20px; width: 80vw; margin: auto; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #e9f4ff; overflow: auto; margin: 40px 0; }
+.overlay .modal { display: none; border: 5px solid black; border-radius: 20px; height: 60vh; width: 80vw; margin: auto; position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%); background: #e9f4ff; overflow: auto; margin: 40px 0; }
 
 .overlay .modal.show { display: block; }
 
-.overlay .modal .close { position: absolute; top: 0; right: 0; padding: 15px; font-size: 40px; text-decoration: none; }
+.overlay .modal .close { position: absolute; top: 0; left: 0; width: 100%; padding: 10px; font-size: 20px; text-decoration: none; border-bottom: 2px solid black; }
 
-.overlay .modal .modal-heading { font-size: 20px; text-align: center; line-height: 25px; font-family: 'Baloo Bhaina 2'; }
+.overlay .modal .modal-heading { font-size: 20px; text-align: center; line-height: 25px; font-family: 'Baloo Bhaina 2'; padding: 5px 0; }
 
 footer { display: -ms-flexbox; display: flex; -ms-flex-pack: center; justify-content: center; -ms-flex-align: center; align-items: center; height: 50px; background-color: #fcf9d2; margin-top: 40px; font-weight: bold; }

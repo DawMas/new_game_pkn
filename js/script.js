@@ -16,6 +16,9 @@ var gameTable = document.getElementById('game-table');
 var modals = document.querySelectorAll('.modal');
 var modalSection = document.querySelector('#modals-overlay');
 var closeButtoms = document.querySelectorAll('.modal .close');
+var startButton = document.querySelector('#new-game-start');
+var playerName = document.getElementById('player-name');
+var modalNewGame = document.getElementById('modal-new-game');
 
 var params = {
     numberOfGames: 3,
@@ -23,6 +26,7 @@ var params = {
     compWin: 0,
     canPlay: true,
     roundNumber: 0,
+    playerName: 'Player',
     progress: [],
 }
 
@@ -62,7 +66,7 @@ var logTable = function (p, s, c) {
 var checkValue = function (number) {
     (isNaN(number) || !number || number <= 0) ? (log('Please insert number > 0'), params.canPlay = false) : (params.canPlay = true);
 }
-var showModal = function () {
+var showModal = function (event) {
     for (var i = 0; i < modals.length; i++) {
         modals[i].classList.remove('show');
     }
@@ -75,6 +79,19 @@ var hideModal = function () {
 }
 
 modalSection.addEventListener('click', hideModal);
+startButton.addEventListener('click', function (event) {
+    params.playerName = document.getElementById('input-player-name').value;
+    playerName.innerHTML = params.playerName;
+    params.numberOfGames = document.getElementById('input-game-number').value;
+    if (isNaN(params.numberOfGames) || params.numberOfGames <= 0) {
+        modalNewGame.lastChild.innerHTML = 'Please insert number > 0';
+        console.log(modalNewGame.lastChild);
+    }
+    else {
+        gameNumber.innerHTML = params.numberOfGames;
+        hideModal();
+    }
+});
 
 for (var i = 0; i < modals.length; i++) {
     modals[i].addEventListener('click', function (event) {
@@ -153,10 +170,11 @@ boxNew.addEventListener('click', function () {
     params.compWin = 0;
     params.roundNumber = 0;
     params.progress = [];
-    checkValue(params.numberOfGames = prompt('How many games do You want to play?'));
-    gameNumber.innerHTML = params.numberOfGames;
+    //checkValue(params.numberOfGames = prompt('How many games do You want to play?'));
     resultComp.innerHTML = 0;
     resultPlayer.innerHTML = 0;
+    showModal();
+    modalNewGame.classList.add('show');
 
 })
 

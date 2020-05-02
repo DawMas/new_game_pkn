@@ -20,27 +20,27 @@
         <div>
             <button class="box" id="new-game">NEW GAME</button>
         </div>
-        
+
         <div class="box-number">PLAY TO <span id="game-number">3</span> WINS</div>
 
     </section>
     <section class="buttons">
         <div>
-            <button class="player-move paper"  data-move="1"></button>
+            <button class="player-move paper" data-move="1"></button>
         </div>
         <div>
             <button class="player-move stone" data-move="2"></button>
         </div>
         <div>
-            <button class="player-move scissors"  data-move="3"></button>
+            <button class="player-move scissors" data-move="3"></button>
         </div>
     </section>
 
     <section class="result" id="result-data">
-    
+
         <table>
             <tr>
-                <th>Player</th>
+                <th id="player-name">Player</th>
                 <th></th>
                 <th>Computer</th>
             </tr>
@@ -55,16 +55,24 @@
         </table>
 
     </section>
-    <section class="overlay " id="modals-overlay">
+    <section class="overlay show" id="modals-overlay">
         <div class="modal" id="modal-score">
             <a href="#" class="close">close</a>
             <div class="modal-heading" id="text-out"></div>
-         
         </div>
-        <div class="modal" id="modal-new-game">
-            
+        <div class="modal show" id="modal-new-game">
+            <div class="modal-new-game">
+                <div class="new-game-name">
+                   Your name:  <input type="text" placeholder="name" id="input-player-name">
+                </div>
+                <div class="new-game-games">
+                   Number of games:  <input type="number" id='input-game-number' >
+                </div>
+                <button id="new-game-start">start</button>
+            </div>
+            <div class="modal-heading"></div>
         </div>
-     
+
     </section>
 
 

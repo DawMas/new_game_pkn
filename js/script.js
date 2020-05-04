@@ -2,17 +2,13 @@
 
 
 var playerMove = document.querySelectorAll('.player-move');
-
 var boxNew = document.getElementById('new-game');
-
 var output = document.getElementById("text-out");
 var outputOver = document.getElementById('text-over');
-
 var resultPlayer = document.getElementById('result-player');
 var resultComp = document.getElementById('result-comp');
 var gameNumber = document.getElementById('game-number');
 var gameTable = document.getElementById('game-table');
-
 var modals = document.querySelectorAll('.modal');
 var modalSection = document.querySelector('#modals-overlay');
 var closeButtoms = document.querySelectorAll('.modal .close');
@@ -59,12 +55,8 @@ var logScores = function () {
         '<br><br><table><tr><th>Round</th><th>Your move</th><th>Comp move</th><th>Round score</th><th>Game score</th></tr>'
         + scores + '</table >')
 }
-
 var logTable = function (p, s, c) {
     gameTable.insertAdjacentHTML('afterbegin', '<tr><td>' + names(p) + '</td><td>' + s + '</td><td>' + names(c) + '</td></tr>');
-}
-var checkValue = function (number) {
-    (isNaN(number) || !number || number <= 0) ? (log('Please insert number > 0'), params.canPlay = false) : (params.canPlay = true);
 }
 var showModal = function (event) {
     for (var i = 0; i < modals.length; i++) {
@@ -73,19 +65,16 @@ var showModal = function (event) {
     modalSection.classList.add('show');
     document.querySelector('#modal-score').classList.add('show');
 }
-
 var hideModal = function () {
     modalSection.classList.remove('show');
 }
-
 modalSection.addEventListener('click', hideModal);
 startButton.addEventListener('click', function (event) {
     params.playerName = document.getElementById('input-player-name').value;
     playerName.innerHTML = params.playerName;
     params.numberOfGames = document.getElementById('input-game-number').value;
     if (isNaN(params.numberOfGames) || params.numberOfGames <= 0) {
-        modalNewGame.lastChild.innerHTML = 'Please insert number > 0';
-        console.log(modalNewGame.lastChild);
+        modalNewGame.lastElementChild.innerHTML = 'Please insert number > 0';
     }
     else {
         gameNumber.innerHTML = params.numberOfGames;
@@ -99,13 +88,9 @@ for (var i = 0; i < modals.length; i++) {
     })
 }
 
-
-
-
 var playGame = function (event) {
 
     var player = event.target.getAttribute('data-move');
-
     var comp = draw();
     var score;
 
@@ -114,7 +99,6 @@ var playGame = function (event) {
         logTable(player, score, comp);
         params.playerWin++;
         params.roundNumber++;
-
     }
     else if (player == comp) {
         score = 'Draw';
@@ -170,7 +154,7 @@ boxNew.addEventListener('click', function () {
     params.compWin = 0;
     params.roundNumber = 0;
     params.progress = [];
-    //checkValue(params.numberOfGames = prompt('How many games do You want to play?'));
+    modalNewGame.lastElementChild.innerHTML = '';
     resultComp.innerHTML = 0;
     resultPlayer.innerHTML = 0;
     showModal();

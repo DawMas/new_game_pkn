@@ -32,7 +32,7 @@
   "homepage": "https://github.com/DawMas/new_7_nauka_gita#readme",
   "devDependencies": {
     "autoprefixer-cli": "^1.0.0",
-    "browser-sync": "^2.26.7",
+    "browser-sync": "^2.27.10",
     "globstar": "^1.0.0",
     "mkdirp": "^1.0.4",
     "node-sass": "^4.13.1",
